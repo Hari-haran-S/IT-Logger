@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 
 //routes
 app.use('/api/logs', require('./routes/logs'));
+app.use('/api/techs', require('./routes/techs'));
 
 //listen
 const PORT = 5000;
