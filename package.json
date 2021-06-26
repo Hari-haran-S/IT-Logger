@@ -1,0 +1,19 @@
+{
+  "name": "it-logger",
+  "version": "1.0.0",
+  "description": "log issues in it department",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "Hariharan S",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.2.0",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.0",
+    "mongoose": "^5.12.15"
+  }
+}
