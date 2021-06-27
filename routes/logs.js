@@ -49,7 +49,7 @@ router.put('/:id', async (req, res) => {
   const { message, attention, tech } = req.body;
   const logFeilds = {};
   if (message) logFeilds.message = message;
-  if (attention) logFeilds.attention = attention;
+  // if (attention) logFeilds.attention = attention;
   if (tech) logFeilds.tech = tech;
   try {
     let log = await Log.findById(req.params.id);
@@ -57,7 +57,7 @@ router.put('/:id', async (req, res) => {
 
     log = await Log.findByIdAndUpdate(
       req.params.id,
-      { $set: logFeilds },
+      { attention, $set: logFeilds },
       { new: true }
     );
     res.json(log);
