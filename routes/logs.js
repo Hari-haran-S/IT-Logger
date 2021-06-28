@@ -8,15 +8,26 @@ const { body, validationResult } = require('express-validator');
 
 router.get('/', async (req, res) => {
   try {
-    const logs = await Log.find().sort({
-      date: -1,
-    });
+    const string = req.query.q;
+    const logs = await Log.find()
+      .or([
+        {
+          message: { $regex: new RegExp(string), $options: 'i' },
+        },
+        {
+          tech: { $regex: new RegExp(string), $options: 'i' },
+        },
+      ])
+      .sort({
+        date: -1,
+      });
     res.json(logs);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('server Error');
   }
 });
+
 router.post(
   '/',
   [
